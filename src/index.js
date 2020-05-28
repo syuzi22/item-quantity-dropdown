@@ -15,6 +15,7 @@ import 'styles/main.scss';
       displayCls: 'iqdropdown-content',
       controlsCls: 'iqdropdown-item-controls',
       counterCls: 'counter',
+      resetCls: 'iqdropdown-reset',
     },
     items: {},
     onChange: () => {},
@@ -126,6 +127,17 @@ import 'styles/main.scss';
         totalItems += defaultCount;
         setItemSettings(id, $item);
         addControls(id, $item);
+      });
+
+      $(document.getElementsByClassName(settings.controls.resetCls)).click((event) => {
+        event.stopPropagation();
+
+        itemCount.id = 0;
+        totalItems = 0;
+
+        $(document.getElementsByClassName(settings.controls.counterCls)).text(0);
+
+        updateDisplay();
       });
 
       updateDisplay();
