@@ -131,12 +131,9 @@ import 'styles/main.scss';
 
       $(document.getElementsByClassName(settings.controls.resetCls)).click((event) => {
         event.stopPropagation();
-
-        itemCount.id = 0;
+        Object.keys(itemCount).forEach((key) => { itemCount[key] = 0; });
         totalItems = 0;
-
         $(document.getElementsByClassName(settings.controls.counterCls)).text(0);
-
         updateDisplay();
       });
 
