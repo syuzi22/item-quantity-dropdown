@@ -129,11 +129,11 @@ import 'styles/main.scss';
         addControls(id, $item);
       });
 
-      $(document.getElementsByClassName(settings.controls.resetCls)).click((event) => {
+      $this.find(`.${settings.controls.resetCls}`).click((event) => {
         event.stopPropagation();
         Object.keys(itemCount).forEach((key) => { itemCount[key] = 0; });
         totalItems = 0;
-        $(document.getElementsByClassName(settings.controls.counterCls)).text(0);
+        $this.find(`.${settings.controls.counterCls}`).text(0);
         updateDisplay();
       });
 
