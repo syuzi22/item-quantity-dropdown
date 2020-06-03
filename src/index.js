@@ -46,7 +46,7 @@ import 'styles/main.scss';
       function updateDisplay () {
         $selection.html(settings.setSelectionText(itemCount, totalItems));
         if (typeof settings.onUpdateDisplay === 'function') {
-          settings.onUpdateDisplay($this);
+          settings.onUpdateDisplay($this, totalItems);
         }
       }
 
