@@ -19,6 +19,7 @@ import 'styles/main.scss';
     },
     items: {},
     onChange: () => {},
+    onUpdateDisplay: () => {},
     beforeDecrement: () => true,
     beforeIncrement: () => true,
     setSelectionText (itemCount, totalItems) {
@@ -44,6 +45,9 @@ import 'styles/main.scss';
 
       function updateDisplay () {
         $selection.html(settings.setSelectionText(itemCount, totalItems));
+        if (typeof settings.onUpdateDisplay === 'function') {
+          settings.onUpdateDisplay($this);
+        }
       }
 
       function setItemSettings (id, $item) {
@@ -128,7 +132,6 @@ import 'styles/main.scss';
         setItemSettings(id, $item);
         addControls(id, $item);
       });
-
       $this.find(`.${settings.controls.resetCls}`).click((event) => {
         event.stopPropagation();
         Object.keys(itemCount).forEach((key) => { itemCount[key] = 0; });
